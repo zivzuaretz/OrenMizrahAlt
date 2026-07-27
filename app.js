@@ -74,25 +74,26 @@ function validDate(value) {
 
 function renderCampaignTitle(value) {
   const title = String(value || 'אורן מזרח מוכרת 250M אלטשולר שחם 💸').trim();
-  const marker = 'אלטשולר שחם';
-  const markerIndex = title.indexOf(marker);
+  const marker = ['עם אורן מזרח', 'אלטשולר שחם'].find(candidate => title.includes(candidate));
+  const markerIndex = marker ? title.indexOf(marker) : -1;
   const lines = markerIndex > 0
     ? [title.slice(0, markerIndex).trim(), title.slice(markerIndex).trim()]
     : [title];
   const heading = document.getElementById('campaign-title');
   heading.replaceChildren(...lines.map(line => {
     const span = document.createElement('span');
-    const targetIndex = line.indexOf('250M');
+    const targetTerm = ['רבע מיליארד', '250M'].find(term => line.includes(term));
+    const targetIndex = targetTerm ? line.indexOf(targetTerm) : -1;
     if (targetIndex < 0) {
       span.textContent = line;
       return span;
     }
     span.append(document.createTextNode(line.slice(0, targetIndex)));
-    const target = document.createElement('bdi');
+    const target = document.createElement(targetTerm === '250M' ? 'bdi' : 'strong');
     target.className = 'campaign-target';
-    target.dir = 'ltr';
-    target.textContent = '250M';
-    span.append(target, document.createTextNode(line.slice(targetIndex + 4)));
+    if (targetTerm === '250M') target.dir = 'ltr';
+    target.textContent = targetTerm;
+    span.append(target, document.createTextNode(line.slice(targetIndex + targetTerm.length)));
     return span;
   }));
 }
