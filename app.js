@@ -89,7 +89,29 @@ function renderTeam(team, total, isLeader) {
   card.querySelector('.leader-badge').hidden = !isLeader;
   const agentsBox = card.querySelector('.agents');
   if (agents.length === 0) agentsBox.append(emptyState());
-  else agents.forEach(agent => agentsBox.append(renderAgent(agent)));
+  else {
+    const rows = agents.map((agent, index) => {
+      const row = renderAgent(agent);
+      if (index >= 3) row.hidden = true;
+      agentsBox.append(row);
+      return row;
+    });
+    if (agents.length > 3) {
+      const moreCount = agents.length - 3;
+      const toggle = document.createElement('button');
+      toggle.type = 'button';
+      toggle.className = 'agents-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.textContent = `הצג עוד (${integer.format(moreCount)})`;
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        rows.slice(3).forEach(row => { row.hidden = expanded; });
+        toggle.setAttribute('aria-expanded', String(!expanded));
+        toggle.textContent = expanded ? `הצג עוד (${integer.format(moreCount)})` : 'הצג פחות';
+      });
+      agentsBox.append(toggle);
+    }
+  }
   return { card, total, agentCount: agents.length };
 }
 
