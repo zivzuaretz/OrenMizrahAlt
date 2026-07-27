@@ -38,10 +38,6 @@ function validDate(value) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-function initials(name) {
-  return String(name || '').trim().split(/\s+/).slice(0, 2).map(word => word[0]).join('') || '•';
-}
-
 function emptyState() {
   const box = document.createElement('div');
   box.className = 'empty-state';
@@ -56,10 +52,6 @@ function renderAgent(agent) {
   const target = safeAmount(agent.target);
   const attainment = target > 0 ? (salesAmount / target) * 100 : 0;
   const visualAttainment = Math.min(Math.max(attainment, 0), 100);
-  const avatar = document.createElement('span');
-  avatar.className = 'agent-avatar';
-  avatar.setAttribute('aria-hidden', 'true');
-  avatar.textContent = initials(agent.name);
   const details = document.createElement('div');
   details.className = 'agent-details';
   const name = document.createElement('span');
@@ -90,7 +82,7 @@ function renderAgent(agent) {
   const sales = document.createElement('span');
   sales.className = 'agent-sales';
   sales.textContent = formatCompactMoney(salesAmount);
-  row.append(avatar, details, sales);
+  row.append(details, sales);
   return row;
 }
 
