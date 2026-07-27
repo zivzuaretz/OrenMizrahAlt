@@ -29,7 +29,9 @@ const globalSold = data.teams.flatMap(team => team.agents).reduce((sum, agent) =
 assert.ok(globalSold <= data.campaign.target * 10, 'global sold is implausibly high');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 assert.match(html, /<html lang="he" dir="rtl">/);
-assert.match(html, /<title>אורן מזרח מוכרת 250M אלטשולר שחם💸<\/title>/);
+assert.match(html, /<title>המרוץ ל־250M 🏁 \| אורן מזרח × אלטשולר שחם<\/title>/);
+assert.match(html, /<meta property="og:title" content="המרוץ ל־250M 🏁 \| אורן מזרח × אלטשולר שחם">/);
+assert.match(html, /<meta property="og:description" content="אורן מזרח X אלטשולר שחם - הארגזים בדרך!">/);
 console.log(`✓ ${required.length} required files found`);
 console.log('✓ campaign, teams, and derived-sales data schema valid');
 console.log('✓ Hebrew RTL document metadata valid');

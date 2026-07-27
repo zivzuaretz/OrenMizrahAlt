@@ -249,7 +249,9 @@ function render(data) {
   const visualProgress = Math.min(Math.max(rawProgress, 0), 100);
   const progressText = `${percent.format(rawProgress)}%`;
 
-  document.title = campaign.title || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
+  document.title = document.querySelector('meta[property="og:title"]')?.content
+    || campaign.title
+    || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
   renderCampaignTitle(campaign.title);
   document.getElementById('sold-total').textContent = formatCompactMoney(sold);
   document.getElementById('remaining-total').textContent = formatCompactMoney(remaining);
