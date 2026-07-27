@@ -92,6 +92,7 @@ function animateValue(element, from, to, formatter, duration = 900) {
     element.textContent = formatter(to);
     return;
   }
+  element.textContent = formatter(from);
   const startedAt = performance.now();
   const frame = now => {
     const progress = Math.min((now - startedAt) / duration, 1);
