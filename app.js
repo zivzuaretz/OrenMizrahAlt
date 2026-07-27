@@ -6,9 +6,6 @@ const shekels = new Intl.NumberFormat('he-IL', {
 });
 const integer = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-const dateOnly = new Intl.DateTimeFormat('he-IL', {
-  day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'Asia/Jerusalem'
-});
 const dateTime = new Intl.DateTimeFormat('he-IL', {
   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
   timeZone: 'Asia/Jerusalem'
@@ -171,8 +168,6 @@ function render(data) {
     leaderStatus.textContent = 'המרוץ מתחיל עכשיו';
   }
 
-  const deadline = validDate(`${campaign.deadline}T12:00:00`);
-  document.getElementById('deadline').textContent = deadline ? dateOnly.format(deadline) : 'לא הוגדר';
   const updated = validDate(campaign.lastUpdated);
   const time = document.getElementById('last-updated');
   time.textContent = updated ? dateTime.format(updated) : 'לא הוגדר';
