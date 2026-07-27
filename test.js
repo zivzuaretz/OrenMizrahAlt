@@ -22,6 +22,7 @@ data.teams.forEach(team => {
   team.agents.forEach(agent => {
     assert.ok(agent.name, `${team.name}: agent name is required`);
     assert.ok(Number.isFinite(agent.sales) && agent.sales >= 0, `${team.name}: agent sales must be non-negative`);
+    assert.ok(Number.isFinite(agent.target) && agent.target > 0, `${team.name}: agent target must be positive`);
   });
 });
 const globalSold = data.teams.flatMap(team => team.agents).reduce((sum, agent) => sum + agent.sales, 0);

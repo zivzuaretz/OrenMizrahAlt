@@ -52,17 +52,45 @@ function emptyState() {
 function renderAgent(agent) {
   const row = document.createElement('div');
   row.className = 'agent-row';
+  const salesAmount = safeAmount(agent.sales);
+  const target = safeAmount(agent.target);
+  const attainment = target > 0 ? (salesAmount / target) * 100 : 0;
+  const visualAttainment = Math.min(Math.max(attainment, 0), 100);
   const avatar = document.createElement('span');
   avatar.className = 'agent-avatar';
   avatar.setAttribute('aria-hidden', 'true');
   avatar.textContent = initials(agent.name);
+  const details = document.createElement('div');
+  details.className = 'agent-details';
   const name = document.createElement('span');
   name.className = 'agent-name';
   name.textContent = String(agent.name || 'סוכן ללא שם');
+  details.append(name);
+  if (target > 0) {
+    const progressMeta = document.createElement('div');
+    progressMeta.className = 'agent-progress-meta';
+    const progressText = document.createElement('span');
+    progressText.textContent = `${percent.format(attainment)}%`;
+    const targetText = document.createElement('span');
+    targetText.textContent = `יעד ${formatCompactMoney(target)}`;
+    progressMeta.append(progressText, targetText);
+    const progressBar = document.createElement('div');
+    progressBar.className = 'agent-progress';
+    progressBar.setAttribute('role', 'progressbar');
+    progressBar.setAttribute('aria-label', `עמידה ביעד של ${agent.name || 'הסוכן'}`);
+    progressBar.setAttribute('aria-valuemin', '0');
+    progressBar.setAttribute('aria-valuemax', '100');
+    progressBar.setAttribute('aria-valuenow', String(Number(visualAttainment.toFixed(2))));
+    const progressFill = document.createElement('span');
+    progressFill.className = 'agent-progress__fill';
+    progressFill.style.width = `${visualAttainment}%`;
+    progressBar.append(progressFill);
+    details.append(progressMeta, progressBar);
+  }
   const sales = document.createElement('span');
   sales.className = 'agent-sales';
-  sales.textContent = formatCompactMoney(agent.sales);
-  row.append(avatar, name, sales);
+  sales.textContent = formatCompactMoney(salesAmount);
+  row.append(avatar, details, sales);
   return row;
 }
 

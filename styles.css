@@ -70,8 +70,14 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
 .leader-badge { padding: 3px 7px; color: white; background: var(--team-accent); border-radius: 99px; font-size: .66rem; font-weight: 800; white-space: nowrap; }
 .leader-badge--trailing { color: #8a4431; background: #fff0ea; }
 .agents { padding: 10px 18px 15px; border-top: 1px solid var(--line); }.agent-row { display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 9px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+.agent-row[hidden] { display: none; }
 .agent-row:last-child { border-bottom: 0; }.agent-avatar { display: grid; place-items: center; width: 38px; height: 38px; color: var(--green-800); background: var(--teal-soft); border-radius: 50%; font-weight: 800; }
-.agent-name { font-weight: 700; }.agent-sales { color: var(--green-800); font-weight: 800; white-space: nowrap; }
+.agent-details { min-width: 0; }
+.agent-name { display: block; font-weight: 700; }
+.agent-progress-meta { display: flex; justify-content: space-between; gap: 8px; margin-top: 3px; color: var(--muted); font-size: .64rem; }
+.agent-progress { height: 5px; margin-top: 3px; overflow: hidden; background: #e5eeeb; border-radius: 99px; }
+.agent-progress__fill { display: block; height: 100%; background: linear-gradient(90deg, var(--team-accent), var(--lime)); border-radius: inherit; }
+.agent-sales { color: var(--green-800); font-weight: 800; white-space: nowrap; }
 .agents-toggle { width: 100%; margin-top: 8px; padding: 9px 12px; color: var(--team-accent); background: color-mix(in srgb, var(--team-accent) 8%, white); border: 1px solid color-mix(in srgb, var(--team-accent) 28%, white); border-radius: 12px; font: inherit; font-size: .78rem; font-weight: 800; cursor: pointer; }
 .agents-toggle:hover { background: color-mix(in srgb, var(--team-accent) 13%, white); }
 .agents-toggle:focus-visible { outline: 3px solid color-mix(in srgb, var(--team-accent) 28%, transparent); outline-offset: 2px; }
