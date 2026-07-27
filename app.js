@@ -7,7 +7,6 @@ const shekels = new Intl.NumberFormat('he-IL', {
 const integer = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const animatedPercent = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
-const wholeMillions = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const fractionalMillions = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 });
 const dateTime = new Intl.DateTimeFormat('he-IL', {
   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
@@ -59,16 +58,12 @@ function formatMoney(value) {
 
 function formatCompactMoney(value) {
   const amount = safeAmount(value);
-  const formatter = amount > 0 && amount < 1000000 ? fractionalMillions : wholeMillions;
-  return `${formatter.format(amount / 1000000)}M ₪`;
+  return `${fractionalMillions.format(amount / 1000000)}M ₪`;
 }
 
 function fixedMoneyFormatter(referenceValue) {
-  const reference = safeAmount(referenceValue);
-  const formatter = reference > 0 && reference < 1000000
-    ? fractionalMillions
-    : wholeMillions;
-  return value => `${formatter.format(safeAmount(value) / 1000000)}M ₪`;
+  safeAmount(referenceValue);
+  return value => `${fractionalMillions.format(safeAmount(value) / 1000000)}M ₪`;
 }
 
 function animateValue(element, from, to, formatter, duration = 900) {
