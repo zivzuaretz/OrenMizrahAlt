@@ -67,6 +67,21 @@ function formatCompactMoney(value) {
   return formatMoney(amount);
 }
 
+function animateValue(element, from, to, formatter, duration = 900) {
+  if (from === to || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    element.textContent = formatter(to);
+    return;
+  }
+  const startedAt = performance.now();
+  const frame = now => {
+    const progress = Math.min((now - startedAt) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    element.textContent = formatter(from + ((to - from) * eased));
+    if (progress < 1) requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+}
+
 function validDate(value) {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? null : date;
@@ -254,10 +269,15 @@ function render(data) {
     || campaign.title
     || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
   renderCampaignTitle(campaign.title);
-  document.getElementById('sold-total').textContent = formatCompactMoney(sold);
-  document.getElementById('remaining-total').textContent = formatCompactMoney(remaining);
+  animateValue(document.getElementById('sold-total'), 0, sold, formatCompactMoney);
+  animateValue(document.getElementById('remaining-total'), target, remaining, formatCompactMoney);
   document.getElementById('target-caption').textContent = `מתוך יעד של ${formatCompactMoney(target)}`;
-  document.getElementById('progress-percent').textContent = progressText;
+  animateValue(
+    document.getElementById('progress-percent'),
+    0,
+    rawProgress,
+    value => `${percent.format(value)}%`,
+  );
   document.getElementById('progress-fill').style.width = `${visualProgress}%`;
   const progress = document.querySelector('.progress');
   progress.setAttribute('aria-valuenow', String(Number(visualProgress.toFixed(2))));
