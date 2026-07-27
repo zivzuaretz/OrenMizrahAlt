@@ -102,13 +102,17 @@ function render(data) {
   let agentCount = 0;
   teamsBox.replaceChildren();
 
-  const totals = teams.map(teamTotal);
-  const leaderTotal = totals.length ? Math.max(...totals) : 0;
-  const leaders = leaderTotal > 0 ? totals.filter(total => total === leaderTotal).length : 0;
-  const runnerUp = [...totals].sort((a, b) => b - a)[1] || 0;
+  const rankedTeams = teams
+    .map((team, originalIndex) => ({ team, total: teamTotal(team), originalIndex }))
+    .sort((a, b) => b.total - a.total || a.originalIndex - b.originalIndex);
+  const leaderTotal = rankedTeams[0]?.total || 0;
+  const leaders = leaderTotal > 0
+    ? rankedTeams.filter(({ total }) => total === leaderTotal).length
+    : 0;
+  const runnerUp = rankedTeams[1]?.total || 0;
 
-  teams.forEach((team, index) => {
-    const rendered = renderTeam(team, totals[index], leaders === 1 && totals[index] === leaderTotal);
+  rankedTeams.forEach(({ team, total }) => {
+    const rendered = renderTeam(team, total, leaders === 1 && total === leaderTotal);
     sold += rendered.total;
     agentCount += rendered.agentCount;
     teamsBox.append(rendered.card);
@@ -136,8 +140,7 @@ function render(data) {
   document.getElementById('agent-count').textContent = `${integer.format(agentCount)} ${agentCount === 1 ? 'סוכן' : 'סוכנים'}`;
   const leaderStatus = document.getElementById('leader-status');
   if (leaders === 1) {
-    const leaderIndex = totals.indexOf(leaderTotal);
-    const leaderName = teams[leaderIndex].name || 'הקבוצה המובילה';
+    const leaderName = rankedTeams[0].team.name || 'הקבוצה המובילה';
     leaderStatus.textContent = `${leaderName} מובילה · פער ${formatCompactMoney(leaderTotal - runnerUp)}`;
   } else if (leaders > 1) {
     leaderStatus.textContent = 'תיקו בצמרת — הכול פתוח';
