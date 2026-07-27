@@ -6,9 +6,12 @@ const shekels = new Intl.NumberFormat('he-IL', {
 });
 const integer = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-const dateOnly = new Intl.DateTimeFormat('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+const dateOnly = new Intl.DateTimeFormat('he-IL', {
+  day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'Asia/Jerusalem'
+});
 const dateTime = new Intl.DateTimeFormat('he-IL', {
-  day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit'
+  day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
+  timeZone: 'Asia/Jerusalem'
 });
 
 function safeAmount(value) {
@@ -98,7 +101,7 @@ function render(data) {
   document.getElementById('progress-percent').textContent = progressText;
   document.getElementById('progress-fill').style.width = `${visualProgress}%`;
   const progress = document.querySelector('.progress');
-  progress.setAttribute('aria-valuenow', String(Math.round(visualProgress)));
+  progress.setAttribute('aria-valuenow', String(Number(visualProgress.toFixed(2))));
   progress.setAttribute('aria-valuetext', `${progressText} מהיעד`);
   document.getElementById('progress-status').textContent = sold === 0
     ? 'המסע ליעד מתחיל כאן'
