@@ -31,7 +31,9 @@ body {
 .partnership span { height: 1px; flex: 1; background: var(--line); }.partnership i { font-style: normal; }
 .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; padding: 18px 0 28px; }
 .hero { position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 15px 20px; color: white; border-radius: 30px; background: linear-gradient(120deg, var(--green-950), var(--green-800)); box-shadow: var(--shadow); }
-.hero-brand { position: relative; z-index: 1; padding: 5px 10px; background: rgba(255,255,255,.96); border-radius: 15px; box-shadow: 0 7px 20px rgba(0,0,0,.12); }
+.hero-brand { position: relative; z-index: 1; padding: 0; background: transparent; }
+.hero-brand .partnership { color: rgba(255,255,255,.72); }
+.hero-brand .partnership span { background: rgba(255,255,255,.3); }
 .hero-status { position: relative; z-index: 1; color: #c9ddd8; font-size: .67rem; text-align: center; }
 .hero__copy { flex: 1; text-align: center; }
 .hero::after { content: ""; position: absolute; width: 270px; height: 270px; left: -80px; bottom: -180px; border: 50px solid rgba(185,219,70,.14); border-radius: 50%; }
