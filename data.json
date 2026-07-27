@@ -4,14 +4,40 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-07-27T20:57:29+03:00"
+    "lastUpdated": "2026-07-27T21:52:28+03:00"
   },
   "teams": [
     {
       "id": "liron-brill",
       "name": "קבוצת לירון בריל",
       "managerImage": "assets/liron-brill.jpg",
-      "agents": []
+      "agents": [
+        {
+          "id": "meni-biton",
+          "name": "מני ביטון",
+          "sales": 0
+        },
+        {
+          "id": "kobi-nahum",
+          "name": "קובי נחום",
+          "sales": 0
+        },
+        {
+          "id": "shai-aharon",
+          "name": "שי אהרון",
+          "sales": 0
+        },
+        {
+          "id": "oded-mechani",
+          "name": "עודד מכני",
+          "sales": 0
+        },
+        {
+          "id": "guri-liran",
+          "name": "גורי לירן",
+          "sales": 0
+        }
+      ]
     },
     {
       "id": "assaf-elmakias",
@@ -21,7 +47,36 @@
         {
           "id": "elite-agency",
           "name": "סוכנות עילית",
-          "sales": 900000
+          "sales": 900000,
+          "aliases": [
+            "עלית",
+            "עילית"
+          ]
+        },
+        {
+          "id": "benchmark",
+          "name": "בנצ'מרק",
+          "sales": 0
+        },
+        {
+          "id": "public",
+          "name": "פאבליק",
+          "sales": 0
+        },
+        {
+          "id": "or-segev",
+          "name": "אור שגב",
+          "sales": 0
+        },
+        {
+          "id": "yuval-gabay",
+          "name": "יובל גבאי",
+          "sales": 0
+        },
+        {
+          "id": "pomenel",
+          "name": "פומנל",
+          "sales": 0
         }
       ]
     }
