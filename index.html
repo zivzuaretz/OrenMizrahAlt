@@ -6,15 +6,21 @@
   <meta name="theme-color" content="#063d35">
   <meta name="description" content="לוח ניהול מכירות לקמפיין 250 מיליון לאלטשולר שחם">
   <title>250 מיליון לאלטשולר שחם</title>
-  <link rel="stylesheet" href="styles.css?v=20260727-9">
+  <link rel="stylesheet" href="styles.css?v=20260727-10">
 </head>
 <body>
   <a class="skip-link" href="#main">דלגו לתוכן הראשי</a>
   <header class="topbar" aria-label="כותרת האתר">
     <div class="topbar__inner">
-      <img class="brand-logo brand-logo--oren" src="assets/oren-mizrah-logo.jpg" alt="אורן מזרח">
-      <div class="partnership" aria-hidden="true"><span></span><i>×</i><span></span></div>
-      <img class="brand-logo brand-logo--altshuler" src="assets/altshuler-logo.jpg" alt="אלטשולר שחם">
+      <div class="brand-lockup">
+        <img class="brand-logo brand-logo--oren" src="assets/oren-mizrah-logo.jpg" alt="אורן מזרח">
+        <div class="partnership" aria-hidden="true"><span></span><i>×</i><span></span></div>
+        <img class="brand-logo brand-logo--altshuler" src="assets/altshuler-logo.jpg" alt="אלטשולר שחם">
+      </div>
+      <div class="topbar-status">
+        <span><span class="status-dot" aria-hidden="true"></span><span id="data-status">הנתונים מעודכנים</span></span>
+        <span>עדכון אחרון: <time id="last-updated">—</time></span>
+      </div>
     </div>
   </header>
 
@@ -69,10 +75,6 @@
       <div id="teams" class="teams-grid" aria-live="polite"></div>
     </section>
 
-    <footer class="dashboard-footer">
-      <p><span class="status-dot" aria-hidden="true"></span><span id="data-status">הנתונים מעודכנים</span></p>
-      <p>עדכון אחרון: <time id="last-updated">—</time></p>
-    </footer>
   </main>
 
   <template id="team-template">
@@ -92,6 +94,6 @@
     </article>
   </template>
 
-  <script src="app.js?v=20260727-9" defer></script>
+  <script src="app.js?v=20260727-10" defer></script>
 </body>
 </html>
