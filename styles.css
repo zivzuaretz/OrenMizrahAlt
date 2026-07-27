@@ -24,10 +24,10 @@ body {
 .skip-link { position: fixed; top: -4rem; right: 1rem; z-index: 10; padding: .7rem 1rem; color: white; background: var(--green-950); border-radius: 8px; }
 .skip-link:focus { top: 1rem; }
 .topbar { background: rgba(255,255,255,.96); border-bottom: 1px solid var(--line); }
-.topbar__inner { width: min(1160px, calc(100% - 32px)); height: 82px; margin: auto; display: flex; align-items: center; justify-content: center; gap: 12px; }
+.topbar__inner { width: min(1160px, calc(100% - 32px)); height: 82px; margin: auto; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .brand-logo { width: 58px; height: 58px; object-fit: contain; border-radius: 14px; mix-blend-mode: multiply; }
 .brand-logo--altshuler { margin-inline-start: 0; }
-.partnership { flex: 0 0 72px; display: flex; align-items: center; gap: 8px; color: var(--muted); }
+.partnership { flex: 0 0 42px; display: flex; align-items: center; gap: 5px; color: var(--muted); }
 .partnership span { height: 1px; flex: 1; background: var(--line); }.partnership i { font-style: normal; }
 .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; padding: 44px 0 28px; }
 .hero { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 28px; padding: 32px; color: white; border-radius: 30px; background: linear-gradient(120deg, var(--green-950), var(--green-800)); box-shadow: var(--shadow); }
