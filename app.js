@@ -74,7 +74,7 @@ function teamTotal(team) {
   return agents.reduce((sum, agent) => sum + safeAmount(agent.sales), 0);
 }
 
-function renderTeam(team, total, isLeader) {
+function renderTeam(team, total, isLeader, isTrailing) {
   const fragment = document.getElementById('team-template').content.cloneNode(true);
   const card = fragment.querySelector('.team-card');
   const agents = (Array.isArray(team.agents) ? [...team.agents] : [])
@@ -86,7 +86,10 @@ function renderTeam(team, total, isLeader) {
   photo.src = team.managerImage || '';
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
   card.querySelector('.team-card__total').textContent = formatCompactMoney(total);
-  card.querySelector('.leader-badge').hidden = !isLeader;
+  const badge = card.querySelector('.leader-badge');
+  badge.hidden = !isLeader && !isTrailing;
+  badge.classList.toggle('leader-badge--trailing', isTrailing);
+  badge.textContent = isLeader ? '🏆 מובילים' : 'נשארו מאחור..🤦🏻‍♀️';
   const agentsBox = card.querySelector('.agents');
   if (agents.length === 0) agentsBox.append(emptyState());
   else {
@@ -134,7 +137,8 @@ function render(data) {
   const runnerUp = rankedTeams[1]?.total || 0;
 
   rankedTeams.forEach(({ team, total }) => {
-    const rendered = renderTeam(team, total, leaders === 1 && total === leaderTotal);
+    const isLeader = leaders === 1 && total === leaderTotal;
+    const rendered = renderTeam(team, total, isLeader, leaders === 1 && !isLeader);
     sold += rendered.total;
     agentCount += rendered.agentCount;
     teamsBox.append(rendered.card);
