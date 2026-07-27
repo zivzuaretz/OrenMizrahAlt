@@ -5,8 +5,8 @@ const shekels = new Intl.NumberFormat('he-IL', {
   style: 'currency', currency: 'ILS', maximumFractionDigits: 0
 });
 const integer = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
-const percent = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
-const animatedPercent = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
+const percent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const animatedPercent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const fractionalMillions = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 });
 const dateTime = new Intl.DateTimeFormat('he-IL', {
   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
