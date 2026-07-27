@@ -31,6 +31,7 @@ body {
 .partnership span { height: 1px; flex: 1; background: var(--line); }.partnership i { font-style: normal; }
 .shell { width: min(1160px, calc(100% - 32px)); margin: 0 auto; padding: 44px 0 28px; }
 .hero { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 28px; padding: 32px; color: white; border-radius: 30px; background: linear-gradient(120deg, var(--green-950), var(--green-800)); box-shadow: var(--shadow); }
+.hero__copy { flex: 1; text-align: center; }
 .hero::after { content: ""; position: absolute; width: 270px; height: 270px; left: -80px; bottom: -180px; border: 50px solid rgba(185,219,70,.14); border-radius: 50%; }
 .eyebrow { margin: 0 0 7px; color: var(--teal); font-size: .79rem; font-weight: 800; letter-spacing: .08em; }
 .hero .eyebrow { color: var(--lime); }
