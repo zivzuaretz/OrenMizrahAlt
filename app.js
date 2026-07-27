@@ -147,8 +147,8 @@ function render(data) {
   const visualProgress = Math.min(Math.max(rawProgress, 0), 100);
   const progressText = `${percent.format(rawProgress)}%`;
 
-  document.title = campaign.title || '250 מיליון לאלטשולר שחם';
-  document.getElementById('campaign-title').textContent = campaign.title || '250 מיליון לאלטשולר שחם';
+  document.title = campaign.title || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
+  document.getElementById('campaign-title').textContent = campaign.title || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
   document.getElementById('sold-total').textContent = formatCompactMoney(sold);
   document.getElementById('remaining-total').textContent = formatCompactMoney(remaining);
   document.getElementById('target-caption').textContent = `מתוך יעד של ${formatCompactMoney(target)}`;
