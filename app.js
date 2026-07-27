@@ -195,8 +195,11 @@ function render(data) {
     ? rankedTeams.filter(({ total }) => total === leaderTotal).length
     : 0;
   const runnerUp = rankedTeams[1]?.total || 0;
-  const banter = BANTER_SETS[Math.floor(Math.random() * BANTER_SETS.length)];
-  const tieBanter = TIE_BANTER[Math.floor(Math.random() * TIE_BANTER.length)];
+  const banterIndex = Number.isFinite(Number(campaign.banterIndex))
+    ? Math.max(0, Math.trunc(Number(campaign.banterIndex)))
+    : 0;
+  const banter = BANTER_SETS[banterIndex % BANTER_SETS.length];
+  const tieBanter = TIE_BANTER[banterIndex % TIE_BANTER.length];
   const leaderFirstName = teamFirstName(rankedTeams[0]?.team);
   const runnerFirstName = teamFirstName(rankedTeams[1]?.team);
 
