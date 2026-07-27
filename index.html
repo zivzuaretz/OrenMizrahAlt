@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#063d35">
   <meta name="description" content="לוח ניהול מכירות לקמפיין אורן מזרח מוכרת 250M אלטשולר שחם💸">
   <title>אורן מזרח מוכרת 250M אלטשולר שחם💸</title>
-  <link rel="stylesheet" href="styles.css?v=20260727-31">
+  <link rel="stylesheet" href="styles.css?v=20260727-32">
 </head>
 <body>
   <a class="skip-link" href="#main">דלגו לתוכן הראשי</a>
@@ -18,7 +18,7 @@
         <img class="brand-logo brand-logo--altshuler" src="assets/altshuler-logo.png" alt="אלטשולר שחם">
       </div>
       <div class="hero__copy">
-        <h1 id="campaign-title"><span>אורן מזרח מוכרת 250M</span><span>אלטשולר שחם 💸</span></h1>
+        <h1 id="campaign-title"><span>אורן מזרח מוכרת <bdi class="campaign-target" dir="ltr">250M</bdi></span><span>אלטשולר שחם 💸</span></h1>
         <p class="hero__subtitle">מתקדמים יחד, עסקה אחר עסקה, אל היעד.</p>
       </div>
     </section>
@@ -30,19 +30,19 @@
       <h2 id="overview-title" class="sr-only">תמונת מצב כללית</h2>
       <div class="metric metric--primary metric--with-image">
         <div class="metric__image metric__image--sold"><img src="assets/oren-mizrah-owners.jpg" alt="הבעלים של אורן מזרח"></div>
-        <span class="metric__label">נמכר עד כה</span>
+        <span class="metric__label">נמכר עד כה 💰</span>
         <strong id="sold-total" class="metric__value">—</strong>
         <span class="metric__caption">מכלל הסוכנים</span>
       </div>
       <div class="metric metric--with-image">
         <div class="metric__image metric__image--remaining"><img src="assets/oren-mizrah-remaining.jpg" alt="צוות אורן מזרח"></div>
-        <span class="metric__label">נותר ליעד</span>
+        <span class="metric__label">נותר ליעד 🎯</span>
         <strong id="remaining-total" class="metric__value">—</strong>
         <span class="metric__caption" id="target-caption">מתוך —</span>
       </div>
       <div class="metric metric--progress">
         <div class="metric__topline">
-          <span class="metric__label">התקדמות</span>
+          <span class="metric__label">התקדמות ליעד 📈</span>
           <strong id="progress-percent">—</strong>
         </div>
         <div class="progress" role="progressbar" aria-label="התקדמות אל יעד המכירות" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -55,7 +55,7 @@
     <section class="teams-section" aria-labelledby="teams-title">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">הנבחרות שלנו</p>
+          <p class="eyebrow">הנבחרות שלנו 🏆</p>
           <h2 id="teams-title" class="sr-only">קבוצות המכירות</h2>
         </div>
         <div class="section-meta">
@@ -70,12 +70,14 @@
   <template id="team-template">
     <article class="team-card">
       <header class="team-card__header">
-        <img class="team-photo" src="" alt="">
+        <div class="team-photo-wrap">
+          <span class="leader-badge" hidden>🏆 מובילים</span>
+          <img class="team-photo" src="" alt="">
+        </div>
         <div class="team-card__identity">
           <h3 class="team-card__name"></h3>
         </div>
         <div class="team-card__score">
-          <span class="leader-badge" hidden>🏆 מובילים</span>
           <strong class="team-card__total"></strong>
         </div>
       </header>
@@ -83,6 +85,6 @@
     </article>
   </template>
 
-  <script src="app.js?v=20260727-31" defer></script>
+  <script src="app.js?v=20260727-32" defer></script>
 </body>
 </html>

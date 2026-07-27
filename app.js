@@ -82,7 +82,17 @@ function renderCampaignTitle(value) {
   const heading = document.getElementById('campaign-title');
   heading.replaceChildren(...lines.map(line => {
     const span = document.createElement('span');
-    span.textContent = line;
+    const targetIndex = line.indexOf('250M');
+    if (targetIndex < 0) {
+      span.textContent = line;
+      return span;
+    }
+    span.append(document.createTextNode(line.slice(0, targetIndex)));
+    const target = document.createElement('bdi');
+    target.className = 'campaign-target';
+    target.dir = 'ltr';
+    target.textContent = '250M';
+    span.append(target, document.createTextNode(line.slice(targetIndex + 4)));
     return span;
   }));
 }
@@ -119,7 +129,7 @@ function renderAgent(agent) {
     const progressText = document.createElement('span');
     progressText.textContent = `${percent.format(attainment)}%`;
     const targetText = document.createElement('span');
-    targetText.textContent = `יעד ${formatCompactMoney(target)}`;
+    targetText.textContent = `יעד אישי 🎯 ${formatCompactMoney(target)}`;
     progressMeta.append(progressText, targetText);
     const progressBar = document.createElement('div');
     progressBar.className = 'agent-progress';
