@@ -23,6 +23,19 @@ function formatMoney(value) {
   return shekels.format(safeAmount(value)).replace(/\u200f/g, '');
 }
 
+function formatCompactMoney(value) {
+  const amount = safeAmount(value);
+  if (amount >= 1000000) {
+    const millions = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 }).format(amount / 1000000);
+    return `${millions} מיליון ₪`;
+  }
+  if (amount >= 1000) {
+    const thousands = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 }).format(amount / 1000);
+    return `${thousands} אלף ₪`;
+  }
+  return formatMoney(amount);
+}
+
 function validDate(value) {
   const date = new Date(value);
   return Number.isNaN(date.getTime()) ? null : date;
@@ -95,9 +108,9 @@ function render(data) {
 
   document.title = campaign.title || '250 מיליון לאלטשולר שחם';
   document.getElementById('campaign-title').textContent = campaign.title || '250 מיליון לאלטשולר שחם';
-  document.getElementById('sold-total').textContent = formatMoney(sold);
-  document.getElementById('remaining-total').textContent = formatMoney(remaining);
-  document.getElementById('target-caption').textContent = `מתוך יעד של ${formatMoney(target)}`;
+  document.getElementById('sold-total').textContent = formatCompactMoney(sold);
+  document.getElementById('remaining-total').textContent = formatCompactMoney(remaining);
+  document.getElementById('target-caption').textContent = `מתוך יעד של ${formatCompactMoney(target)}`;
   document.getElementById('progress-percent').textContent = progressText;
   document.getElementById('progress-fill').style.width = `${visualProgress}%`;
   const progress = document.querySelector('.progress');
@@ -106,7 +119,7 @@ function render(data) {
   document.getElementById('progress-status').textContent = sold === 0
     ? 'המסע ליעד מתחיל כאן'
     : rawProgress >= 100 ? `היעד הושג — ${formatMoney(sold - target)} מעבר ליעד`
-      : `${formatMoney(remaining)} נותרו להשלמת היעד`;
+      : `${formatCompactMoney(remaining)} נותרו להשלמת היעד`;
   document.getElementById('agent-count').textContent = `${integer.format(agentCount)} ${agentCount === 1 ? 'סוכן' : 'סוכנים'}`;
 
   const deadline = validDate(`${campaign.deadline}T12:00:00`);
