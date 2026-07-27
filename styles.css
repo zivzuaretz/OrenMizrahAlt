@@ -11,7 +11,7 @@
   --line: #dfe9e5;
   --surface: #ffffff;
   --canvas: #f4f8f6;
-  --shadow: 0 18px 55px rgba(3, 47, 42, .09);
+  --shadow: 0 7px 18px rgba(3,47,42,.10), 0 22px 48px rgba(3,47,42,.09);
   --radius: 24px;
 }
 * { box-sizing: border-box; }
@@ -42,9 +42,8 @@ body {
 h1 { margin: 0; font-size: clamp(2rem, 8vw, 4rem); line-height: 1.08; letter-spacing: -.035em; }
 h1 span { display: block; }
 .campaign-target { color: var(--lime); font-weight: 950; letter-spacing: -.01em; text-shadow: 0 2px 12px rgba(185,219,70,.2); }
-.hero__subtitle { margin: 12px 0 0; color: #d8e7e3; font-size: 1.05rem; }
 .overview { display: grid; gap: 14px; margin: 14px 14px 0; position: relative; z-index: 2; }
-.metric { display: flex; flex-direction: column; align-items: center; padding: 23px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 10px 35px rgba(3,47,42,.05); }
+.metric { display: flex; flex-direction: column; align-items: center; padding: 23px; text-align: center; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 5px 14px rgba(3,47,42,.09), 0 18px 38px rgba(3,47,42,.08); }
 .metric--with-image { overflow: hidden; padding-top: 0; }
 .metric__image { height: 120px; margin: 0 -23px 16px; overflow: hidden; background: var(--canvas); }
 .metric__image img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -64,7 +63,7 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
 .teams-grid { display: grid; gap: 12px; }.team-card { --team-accent: var(--teal); overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--team-accent); border-radius: var(--radius); box-shadow: var(--shadow); }
 .team-card--liron-brill { --team-accent: var(--teal); }
 .team-card--assaf-elmakias { --team-accent: var(--orange); }
-.team-card--leader { border-color: color-mix(in srgb, var(--team-accent) 55%, white); box-shadow: 0 18px 55px color-mix(in srgb, var(--team-accent) 18%, transparent); }
+.team-card--leader { border-color: color-mix(in srgb, var(--team-accent) 55%, white); box-shadow: 0 8px 20px color-mix(in srgb, var(--team-accent) 18%, transparent), 0 24px 55px color-mix(in srgb, var(--team-accent) 22%, transparent); }
 .team-card__header { position: relative; display: grid; grid-template-columns: 58px minmax(0,1fr) auto; align-items: center; gap: 13px; padding: 44px 18px 11px; }
 .team-photo-wrap { position: relative; width: 58px; height: 58px; }
 .team-photo { width: 58px; height: 58px; object-fit: cover; object-position: center top; border: 3px solid white; border-radius: 17px; box-shadow: 0 0 0 3px color-mix(in srgb, var(--team-accent) 18%, white), 0 8px 20px rgba(3,47,42,.1); }
@@ -100,7 +99,6 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
   .hero-brand .brand-logo { width: 32px; height: 36px; }
   .hero-brand .brand-logo--oren { width: 46px; }
   .hero-brand .partnership { flex-basis: 20px; }
-  .hero__subtitle { display: none; }
   .update-status { margin-top: 4px; font-size: .6rem; }
   h1 { font-size: clamp(1.4rem, 6vw, 1.63rem); line-height: 1.08; }
   .overview { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 10px 9px 0; }
@@ -118,5 +116,5 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
   .team-card__name { font-size: 1.05rem; }
   .team-card__total { font-size: .98rem; }
 }
-@media (min-width: 700px) { .hero { padding: 20px 32px; }.hero-brand .brand-logo { width: 54px; height: 54px; }.hero-brand .brand-logo--oren { width: 72px; }.overview { grid-template-columns: 1fr 1fr 1.2fr; margin: 18px 25px 0; }.teams-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width: 700px) { .hero { padding: 20px 32px; }.hero-brand .brand-logo { width: 48px; height: 48px; }.hero-brand .brand-logo--oren { width: 56px; }.overview { grid-template-columns: 1fr 1fr 1.2fr; margin: 18px 25px 0; }.teams-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.metric,.team-card { transition: transform .2s ease, box-shadow .2s ease; }.metric:hover,.team-card:hover { transform: translateY(-2px); } }
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; } }
