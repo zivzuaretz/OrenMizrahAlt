@@ -69,16 +69,24 @@ function renderAgent(agent) {
   return row;
 }
 
-function renderTeam(team) {
+function teamTotal(team) {
+  const agents = Array.isArray(team.agents) ? team.agents : [];
+  return agents.reduce((sum, agent) => sum + safeAmount(agent.sales), 0);
+}
+
+function renderTeam(team, total, isLeader) {
   const fragment = document.getElementById('team-template').content.cloneNode(true);
   const card = fragment.querySelector('.team-card');
-  const agents = Array.isArray(team.agents) ? team.agents : [];
-  const total = agents.reduce((sum, agent) => sum + safeAmount(agent.sales), 0);
+  const agents = (Array.isArray(team.agents) ? [...team.agents] : [])
+    .sort((a, b) => safeAmount(b.sales) - safeAmount(a.sales));
+  card.classList.add(`team-card--${team.id || 'default'}`);
+  card.classList.toggle('team-card--leader', isLeader);
   card.querySelector('.team-card__name').textContent = team.name || 'קבוצה ללא שם';
   const photo = card.querySelector('.team-photo');
   photo.src = team.managerImage || '';
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
-  card.querySelector('.team-total strong').textContent = formatMoney(total);
+  card.querySelector('.team-card__total').textContent = formatCompactMoney(total);
+  card.querySelector('.leader-badge').hidden = !isLeader;
   const agentsBox = card.querySelector('.agents');
   if (agents.length === 0) agentsBox.append(emptyState());
   else agents.forEach(agent => agentsBox.append(renderAgent(agent)));
@@ -94,8 +102,13 @@ function render(data) {
   let agentCount = 0;
   teamsBox.replaceChildren();
 
-  teams.forEach(team => {
-    const rendered = renderTeam(team);
+  const totals = teams.map(teamTotal);
+  const leaderTotal = totals.length ? Math.max(...totals) : 0;
+  const leaders = leaderTotal > 0 ? totals.filter(total => total === leaderTotal).length : 0;
+  const runnerUp = [...totals].sort((a, b) => b - a)[1] || 0;
+
+  teams.forEach((team, index) => {
+    const rendered = renderTeam(team, totals[index], leaders === 1 && totals[index] === leaderTotal);
     sold += rendered.total;
     agentCount += rendered.agentCount;
     teamsBox.append(rendered.card);
@@ -121,6 +134,16 @@ function render(data) {
     : rawProgress >= 100 ? `היעד הושג — ${formatMoney(sold - target)} מעבר ליעד`
       : `${formatCompactMoney(remaining)} נותרו להשלמת היעד`;
   document.getElementById('agent-count').textContent = `${integer.format(agentCount)} ${agentCount === 1 ? 'סוכן' : 'סוכנים'}`;
+  const leaderStatus = document.getElementById('leader-status');
+  if (leaders === 1) {
+    const leaderIndex = totals.indexOf(leaderTotal);
+    const leaderName = teams[leaderIndex].name || 'הקבוצה המובילה';
+    leaderStatus.textContent = `${leaderName} מובילה · פער ${formatCompactMoney(leaderTotal - runnerUp)}`;
+  } else if (leaders > 1) {
+    leaderStatus.textContent = 'תיקו בצמרת — הכול פתוח';
+  } else {
+    leaderStatus.textContent = 'המרוץ מתחיל עכשיו';
+  }
 
   const deadline = validDate(`${campaign.deadline}T12:00:00`);
   document.getElementById('deadline').textContent = deadline ? dateOnly.format(deadline) : 'לא הוגדר';
