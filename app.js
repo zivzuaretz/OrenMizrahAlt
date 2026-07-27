@@ -57,7 +57,13 @@ function renderAgent(agent) {
   const name = document.createElement('span');
   name.className = 'agent-name';
   name.textContent = String(agent.name || 'סוכן ללא שם');
-  details.append(name);
+  const sales = document.createElement('span');
+  sales.className = 'agent-sales';
+  sales.textContent = formatCompactMoney(salesAmount);
+  const heading = document.createElement('div');
+  heading.className = 'agent-heading';
+  heading.append(name, sales);
+  details.append(heading);
   if (target > 0) {
     const progressMeta = document.createElement('div');
     progressMeta.className = 'agent-progress-meta';
@@ -79,10 +85,7 @@ function renderAgent(agent) {
     progressBar.append(progressFill);
     details.append(progressMeta, progressBar);
   }
-  const sales = document.createElement('span');
-  sales.className = 'agent-sales';
-  sales.textContent = formatCompactMoney(salesAmount);
-  row.append(details, sales);
+  row.append(details);
   return row;
 }
 
