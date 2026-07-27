@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#063d35">
+  <meta name="description" content="לוח ניהול מכירות לקמפיין 250 מיליון לאלטשולר שחם">
+  <title>250 מיליון לאלטשולר שחם</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">דלגו לתוכן הראשי</a>
+  <header class="topbar" aria-label="כותרת האתר">
+    <div class="topbar__inner">
+      <img class="brand-logo brand-logo--oren" src="assets/oren-mizrah-logo.jpg" alt="אורן מזרח">
+      <div class="partnership" aria-hidden="true"><span></span><i>×</i><span></span></div>
+      <img class="brand-logo brand-logo--altshuler" src="assets/altshuler-logo.jpg" alt="אלטשולר שחם">
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="hero" aria-labelledby="campaign-title">
+      <div class="hero__copy">
+        <p class="eyebrow">יעד מכירות קופות גמל · 2026</p>
+        <h1 id="campaign-title">250 מיליון לאלטשולר שחם</h1>
+        <p class="hero__subtitle">מתקדמים יחד, עסקה אחר עסקה, אל היעד.</p>
+      </div>
+      <div class="deadline-card">
+        <span>תאריך היעד</span>
+        <strong id="deadline">—</strong>
+      </div>
+    </section>
+
+    <section class="overview" aria-labelledby="overview-title">
+      <h2 id="overview-title" class="sr-only">תמונת מצב כללית</h2>
+      <div class="metric metric--primary">
+        <span class="metric__label">נמכר עד כה</span>
+        <strong id="sold-total" class="metric__value">—</strong>
+        <span class="metric__caption">מכלל הסוכנים</span>
+      </div>
+      <div class="metric">
+        <span class="metric__label">נותר ליעד</span>
+        <strong id="remaining-total" class="metric__value">—</strong>
+        <span class="metric__caption" id="target-caption">מתוך —</span>
+      </div>
+      <div class="metric metric--progress">
+        <div class="metric__topline">
+          <span class="metric__label">התקדמות</span>
+          <strong id="progress-percent">—</strong>
+        </div>
+        <div class="progress" role="progressbar" aria-label="התקדמות אל יעד המכירות" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-fill" class="progress__fill"></div>
+        </div>
+        <span id="progress-status" class="metric__caption" aria-live="polite">טוען נתונים…</span>
+      </div>
+    </section>
+
+    <section class="teams-section" aria-labelledby="teams-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">הנבחרות שלנו</p>
+          <h2 id="teams-title">ביצועים לפי קבוצה</h2>
+        </div>
+        <span id="agent-count" class="count-pill">0 סוכנים</span>
+      </div>
+      <div id="teams" class="teams-grid" aria-live="polite"></div>
+    </section>
+
+    <footer class="dashboard-footer">
+      <p><span class="status-dot" aria-hidden="true"></span><span id="data-status">הנתונים מעודכנים</span></p>
+      <p>עדכון אחרון: <time id="last-updated">—</time></p>
+    </footer>
+  </main>
+
+  <template id="team-template">
+    <article class="team-card">
+      <header class="team-card__header">
+        <img class="team-photo" src="" alt="">
+        <div>
+          <p class="team-card__kicker">קבוצת מכירות</p>
+          <h3 class="team-card__name"></h3>
+        </div>
+      </header>
+      <div class="team-total">
+        <span>סה״כ הקבוצה</span>
+        <strong></strong>
+      </div>
+      <div class="agents"></div>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
