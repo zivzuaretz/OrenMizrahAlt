@@ -72,6 +72,21 @@ function validDate(value) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
+function renderCampaignTitle(value) {
+  const title = String(value || 'אורן מזרח מוכרת 250M אלטשולר שחם 💸').trim();
+  const marker = 'אלטשולר שחם';
+  const markerIndex = title.indexOf(marker);
+  const lines = markerIndex > 0
+    ? [title.slice(0, markerIndex).trim(), title.slice(markerIndex).trim()]
+    : [title];
+  const heading = document.getElementById('campaign-title');
+  heading.replaceChildren(...lines.map(line => {
+    const span = document.createElement('span');
+    span.textContent = line;
+    return span;
+  }));
+}
+
 function emptyState() {
   const box = document.createElement('div');
   box.className = 'empty-state';
@@ -225,7 +240,7 @@ function render(data) {
   const progressText = `${percent.format(rawProgress)}%`;
 
   document.title = campaign.title || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
-  document.getElementById('campaign-title').textContent = campaign.title || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
+  renderCampaignTitle(campaign.title);
   document.getElementById('sold-total').textContent = formatCompactMoney(sold);
   document.getElementById('remaining-total').textContent = formatCompactMoney(remaining);
   document.getElementById('target-caption').textContent = `מתוך יעד של ${formatCompactMoney(target)}`;
