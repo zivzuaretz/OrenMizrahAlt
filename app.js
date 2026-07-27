@@ -6,6 +6,7 @@ const shekels = new Intl.NumberFormat('he-IL', {
 });
 const integer = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+const animatedPercent = new Intl.NumberFormat('he-IL', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 const dateTime = new Intl.DateTimeFormat('he-IL', {
   day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
   timeZone: 'Asia/Jerusalem'
@@ -65,6 +66,25 @@ function formatCompactMoney(value) {
     return `${thousands}K ₪`;
   }
   return formatMoney(amount);
+}
+
+function fixedMoneyFormatter(referenceValue) {
+  const reference = safeAmount(referenceValue);
+  if (reference >= 1000000) {
+    const millions = new Intl.NumberFormat('he-IL', {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    });
+    return value => `${millions.format(safeAmount(value) / 1000000)}M ₪`;
+  }
+  if (reference >= 1000) {
+    const thousands = new Intl.NumberFormat('he-IL', {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 1,
+    });
+    return value => `${thousands.format(safeAmount(value) / 1000)}K ₪`;
+  }
+  return value => formatMoney(Math.round(safeAmount(value)));
 }
 
 function animateValue(element, from, to, formatter, duration = 900) {
@@ -269,14 +289,14 @@ function render(data) {
     || campaign.title
     || 'אורן מזרח מוכרת 250M אלטשולר שחם💸';
   renderCampaignTitle(campaign.title);
-  animateValue(document.getElementById('sold-total'), 0, sold, formatCompactMoney);
-  animateValue(document.getElementById('remaining-total'), target, remaining, formatCompactMoney);
+  animateValue(document.getElementById('sold-total'), 0, sold, fixedMoneyFormatter(sold));
+  animateValue(document.getElementById('remaining-total'), target, remaining, fixedMoneyFormatter(target));
   document.getElementById('target-caption').textContent = `מתוך יעד של ${formatCompactMoney(target)}`;
   animateValue(
     document.getElementById('progress-percent'),
     0,
     rawProgress,
-    value => `${percent.format(value)}%`,
+    value => `${animatedPercent.format(value)}%`,
   );
   document.getElementById('progress-fill').style.width = `${visualProgress}%`;
   const progress = document.querySelector('.progress');
