@@ -115,7 +115,7 @@ function renderTeam(team, total, isLeader, isTrailing) {
       agentsBox.append(toggle);
     }
   }
-  return { card, total, agentCount: agents.length };
+  return { card, total };
 }
 
 function render(data) {
@@ -124,7 +124,6 @@ function render(data) {
   const target = safeAmount(campaign.target);
   const teamsBox = document.getElementById('teams');
   let sold = 0;
-  let agentCount = 0;
   teamsBox.replaceChildren();
 
   const rankedTeams = teams
@@ -140,7 +139,6 @@ function render(data) {
     const isLeader = leaders === 1 && total === leaderTotal;
     const rendered = renderTeam(team, total, isLeader, leaders === 1 && !isLeader);
     sold += rendered.total;
-    agentCount += rendered.agentCount;
     teamsBox.append(rendered.card);
   });
 
@@ -163,7 +161,6 @@ function render(data) {
     ? 'המסע ליעד מתחיל כאן'
     : rawProgress >= 100 ? `היעד הושג — ${formatMoney(sold - target)} מעבר ליעד`
       : `${formatCompactMoney(remaining)} נותרו להשלמת היעד`;
-  document.getElementById('agent-count').textContent = `${integer.format(agentCount)} ${agentCount === 1 ? 'סוכן' : 'סוכנים'}`;
   const leaderStatus = document.getElementById('leader-status');
   if (leaders === 1) {
     const leaderName = rankedTeams[0].team.name || 'הקבוצה המובילה';
