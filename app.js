@@ -11,6 +11,40 @@ const dateTime = new Intl.DateTimeFormat('he-IL', {
   timeZone: 'Asia/Jerusalem'
 });
 
+const BANTER_SETS = [
+  {
+    leader: ({ loser }) => `איפה אתה, ${loser}? 👀`,
+    trailing: ({ leader }) => `נמחץ על ידי ${leader} 🫠`,
+  },
+  {
+    leader: ({ loser }) => `מישהו ראה את ${loser}? 🔍`,
+    trailing: ({ leader }) => `אוכל אבק של ${leader} 💨`,
+  },
+  {
+    leader: ({ loser }) => `${loser}, נגמרה ההפסקה ☕`,
+    trailing: () => 'הקאמבק תקוע בפקקים 🚗',
+  },
+  {
+    leader: ({ loser }) => `תביאו משקפת, ${loser} מאחור 🔭`,
+    trailing: ({ leader }) => `רואה את ${leader} רק מאחור 👋`,
+  },
+  {
+    leader: ({ leader }) => `${leader} על טורבו 🚀`,
+    trailing: () => 'עדיין מחפש את דוושת הגז 🐢',
+  },
+  {
+    leader: ({ loser }) => `שומעים את ${loser}, או שזה רק הד? 📢`,
+    trailing: ({ leader }) => `${leader} כבר מכר, מה איתך? 😴`,
+  },
+];
+
+const TIE_BANTER = [
+  'הרבה דיבורים, אפס פער 😏',
+  'תיקו? איזה מנומסים 🤭',
+  'שניכם באותו פקק 🚗',
+  'מי ממצמץ ראשון? 👀',
+];
+
 function safeAmount(value) {
   const amount = Number(value);
   return Number.isFinite(amount) && amount >= 0 ? amount : 0;
@@ -94,7 +128,14 @@ function teamTotal(team) {
   return agents.reduce((sum, agent) => sum + safeAmount(agent.sales), 0);
 }
 
-function renderTeam(team, total, isLeader, isTrailing) {
+function teamFirstName(team) {
+  return String(team?.name || '')
+    .replace(/^קבוצת\s+/, '')
+    .trim()
+    .split(/\s+/)[0] || 'המתחרה';
+}
+
+function renderTeam(team, total, isLeader, isTrailing, badgeText) {
   const fragment = document.getElementById('team-template').content.cloneNode(true);
   const card = fragment.querySelector('.team-card');
   const agents = (Array.isArray(team.agents) ? [...team.agents] : [])
@@ -107,9 +148,9 @@ function renderTeam(team, total, isLeader, isTrailing) {
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
   card.querySelector('.team-card__total').textContent = formatCompactMoney(total);
   const badge = card.querySelector('.leader-badge');
-  badge.hidden = !isLeader && !isTrailing;
+  badge.hidden = !badgeText;
   badge.classList.toggle('leader-badge--trailing', isTrailing);
-  badge.textContent = isLeader ? '🏆 מובילים' : 'נשארו מאחור..🤦🏻‍♀️';
+  badge.textContent = badgeText;
   const agentsBox = card.querySelector('.agents');
   if (agents.length === 0) agentsBox.append(emptyState());
   else {
@@ -154,10 +195,23 @@ function render(data) {
     ? rankedTeams.filter(({ total }) => total === leaderTotal).length
     : 0;
   const runnerUp = rankedTeams[1]?.total || 0;
+  const banter = BANTER_SETS[Math.floor(Math.random() * BANTER_SETS.length)];
+  const tieBanter = TIE_BANTER[Math.floor(Math.random() * TIE_BANTER.length)];
+  const leaderFirstName = teamFirstName(rankedTeams[0]?.team);
+  const runnerFirstName = teamFirstName(rankedTeams[1]?.team);
 
   rankedTeams.forEach(({ team, total }) => {
     const isLeader = leaders === 1 && total === leaderTotal;
-    const rendered = renderTeam(team, total, isLeader, leaders === 1 && !isLeader);
+    const isTrailing = leaders === 1 && !isLeader;
+    let badgeText = '';
+    if (leaders === 1) {
+      badgeText = isLeader
+        ? banter.leader({ leader: leaderFirstName, loser: runnerFirstName })
+        : banter.trailing({ leader: leaderFirstName, loser: teamFirstName(team) });
+    } else if (leaders > 1) {
+      badgeText = tieBanter;
+    }
+    const rendered = renderTeam(team, total, isLeader, isTrailing, badgeText);
     sold += rendered.total;
     teamsBox.append(rendered.card);
   });
