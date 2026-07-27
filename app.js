@@ -154,7 +154,7 @@ function renderAgent(agent) {
   name.textContent = String(agent.name || 'סוכן ללא שם');
   const sales = document.createElement('span');
   sales.className = 'agent-sales';
-  sales.textContent = formatCompactMoney(salesAmount);
+  animateValue(sales, 0, salesAmount, fixedMoneyFormatter(salesAmount));
   const heading = document.createElement('div');
   heading.className = 'agent-heading';
   heading.append(name, sales);
@@ -207,7 +207,7 @@ function renderTeam(team, total, isLeader, isTrailing, badgeText) {
   const photo = card.querySelector('.team-photo');
   photo.src = team.managerImage || '';
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
-  card.querySelector('.team-card__total').textContent = formatCompactMoney(total);
+  animateValue(card.querySelector('.team-card__total'), 0, total, fixedMoneyFormatter(total));
   const badge = card.querySelector('.leader-badge');
   badge.hidden = !badgeText;
   badge.classList.toggle('leader-badge--trailing', isTrailing);

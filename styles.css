@@ -73,6 +73,7 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
 .team-card__name { margin: 0; color: var(--green-950); font-size: 1.25rem; }
 .team-card__score { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: left; }
 .team-card__total { color: var(--team-accent); font-size: 1.12rem; white-space: nowrap; }
+.team-card__total,.agent-sales { direction: ltr; font-variant-numeric: tabular-nums; }
 .leader-badge { --bubble-bg: var(--team-accent); position: absolute; right: 0; bottom: calc(100% + 9px); z-index: 2; width: max-content; max-width: 210px; padding: 7px 10px; color: white; background: var(--bubble-bg); border-radius: 14px 14px 4px 14px; box-shadow: 0 7px 18px rgba(3,47,42,.16); font-size: .67rem; font-weight: 800; line-height: 1.25; text-align: center; white-space: normal; }
 .leader-badge::after { content: ""; position: absolute; top: 100%; right: 16px; border: 6px solid transparent; border-top-color: var(--bubble-bg); }
 .leader-badge--trailing { --bubble-bg: #fff0ea; color: #8a4431; border: 1px solid #f4c9ba; }
