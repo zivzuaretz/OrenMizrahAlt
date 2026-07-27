@@ -27,6 +27,7 @@ body {
 .topbar__inner { width: min(1160px, calc(100% - 32px)); min-height: 92px; margin: auto; padding: 8px 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; }
 .brand-lockup { display: flex; align-items: center; justify-content: center; gap: 8px; }
 .brand-logo { width: 58px; height: 58px; object-fit: contain; border-radius: 14px; mix-blend-mode: multiply; }
+.brand-logo--oren { transform: scale(1.15); transform-origin: center; }
 .brand-logo--altshuler { margin-inline-start: 0; }
 .partnership { flex: 0 0 42px; display: flex; align-items: center; gap: 5px; color: var(--muted); }
 .partnership span { height: 1px; flex: 1; background: var(--line); }.partnership i { font-style: normal; }
