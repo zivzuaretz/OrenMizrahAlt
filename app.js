@@ -27,11 +27,11 @@ function formatCompactMoney(value) {
   const amount = safeAmount(value);
   if (amount >= 1000000) {
     const millions = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 }).format(amount / 1000000);
-    return `${millions} מיליון ₪`;
+    return `${millions}M ₪`;
   }
   if (amount >= 1000) {
     const thousands = new Intl.NumberFormat('he-IL', { maximumFractionDigits: 1 }).format(amount / 1000);
-    return `${thousands} אלף ₪`;
+    return `${thousands}K ₪`;
   }
   return formatMoney(amount);
 }
@@ -64,7 +64,7 @@ function renderAgent(agent) {
   name.textContent = String(agent.name || 'סוכן ללא שם');
   const sales = document.createElement('span');
   sales.className = 'agent-sales';
-  sales.textContent = formatMoney(agent.sales);
+  sales.textContent = formatCompactMoney(agent.sales);
   row.append(avatar, name, sales);
   return row;
 }
