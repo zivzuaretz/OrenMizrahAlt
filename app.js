@@ -184,6 +184,8 @@ function renderTeam(team, total, isLeader, isTrailing, badgeText) {
   card.classList.add(`team-card--${team.id || 'default'}`);
   card.classList.toggle('team-card--leader', isLeader);
   card.querySelector('.team-card__name').textContent = team.name || 'קבוצה ללא שם';
+  const committedCount = agents.filter(agent => safeAmount(agent.target) > 0).length;
+  card.querySelector('.team-card__commitment').textContent = `${committedCount} סוכנים / סוכנויות התחייבו ליעד`;
   const photo = card.querySelector('.team-photo');
   photo.src = team.managerImage || '';
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
