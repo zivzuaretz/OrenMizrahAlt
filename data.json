@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-07-28T15:29:00+03:00",
+    "lastUpdated": "2026-07-29T09:23:00+03:00",
     "banterIndex": 1
   },
   "teams": [
@@ -16,7 +16,7 @@
         {
           "id": "meni-biton",
           "name": "מני ביטון",
-          "sales": 0,
+          "sales": 750000,
           "target": 10000000
         },
         {
