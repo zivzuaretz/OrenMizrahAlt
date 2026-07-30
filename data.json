@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-07-29T19:29:00+03:00",
+    "lastUpdated": "2026-07-30T10:53:00+03:00",
     "banterIndex": 1
   },
   "teams": [
@@ -64,6 +64,24 @@
         {
           "id": "naor-georgy",
           "name": "נאור ג'ורג'י",
+          "sales": 0,
+          "target": 5000000
+        },
+        {
+          "id": "lior-galili",
+          "name": "ליאור גלילי",
+          "sales": 0,
+          "target": 5000000
+        },
+        {
+          "id": "amit-salerno",
+          "name": "עמית סלרנו",
+          "sales": 0,
+          "target": 5000000
+        },
+        {
+          "id": "professional-stav-cohen",
+          "name": "פרופשיונל (סתיו כהן)",
           "sales": 0,
           "target": 5000000
         }
