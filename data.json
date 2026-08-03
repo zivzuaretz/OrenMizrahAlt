@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-07-30T10:53:00+03:00",
+    "lastUpdated": "2026-08-03T17:27:23+03:00",
     "banterIndex": 1
   },
   "teams": [
@@ -129,7 +129,7 @@
         {
           "id": "phenomenal",
           "name": "פנומנל",
-          "sales": 0,
+          "sales": 236000,
           "target": 10000000
         }
       ]
