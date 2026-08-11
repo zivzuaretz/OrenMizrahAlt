@@ -72,6 +72,7 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
 .team-card__identity { min-width: 0; }
 .team-card__name { margin: 0; color: var(--green-950); font-size: 1.25rem; }
 .team-card__commitment { margin: 3px 0 0; color: var(--muted); font-size: .72rem; font-weight: 700; line-height: 1.3; }
+.team-card__target-summary { margin: 4px 0 0; color: var(--team-accent); font-size: .76rem; font-weight: 850; line-height: 1.35; }
 .team-card__score { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: left; }
 .team-card__total { color: var(--team-accent); font-size: 1.12rem; white-space: nowrap; }
 .team-card__total,.agent-sales { direction: ltr; font-variant-numeric: tabular-nums; }

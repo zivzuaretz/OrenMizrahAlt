@@ -185,7 +185,12 @@ function renderTeam(team, total, isLeader, isTrailing, badgeText) {
   card.classList.toggle('team-card--leader', isLeader);
   card.querySelector('.team-card__name').textContent = team.name || 'קבוצה ללא שם';
   const committedCount = agents.filter(agent => safeAmount(agent.target) > 0).length;
+  const teamTarget = agents.reduce((sum, agent) => sum + safeAmount(agent.target), 0);
+  const teamAttainment = teamTarget > 0 ? (total / teamTarget) * 100 : 0;
   card.querySelector('.team-card__commitment').textContent = `${committedCount} סוכנים / סוכנויות התחייבו ליעד`;
+  card.querySelector('.team-card__target-summary').textContent = teamTarget > 0
+    ? `יעד כולל: ${formatCompactMoney(teamTarget)} · עמידה ביעד: ${percent.format(teamAttainment)}%`
+    : 'טרם הוגדר יעד קבוצתי';
   const photo = card.querySelector('.team-photo');
   photo.src = team.managerImage || '';
   photo.alt = team.name ? `תמונה של מנהל ${team.name}` : 'תמונת מנהל הקבוצה';
