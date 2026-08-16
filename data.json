@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-11T07:54:21+03:00",
+    "lastUpdated": "2026-08-16T16:32:13+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -111,7 +111,7 @@
         {
           "id": "benchmark",
           "name": "בנצ'מרק",
-          "sales": 1526000,
+          "sales": 1886000,
           "target": 30000000
         },
         {
