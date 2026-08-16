@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-16T16:35:27+03:00",
+    "lastUpdated": "2026-08-16T16:41:19+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -101,7 +101,7 @@
         {
           "id": "elite-agency",
           "name": "סוכנות עילית",
-          "sales": 1393000,
+          "sales": 1693000,
           "aliases": [
             "עלית",
             "עילית"
@@ -129,7 +129,7 @@
         {
           "id": "yuval-gabay",
           "name": "יובל גבאי",
-          "sales": 500000,
+          "sales": 690000,
           "target": 10000000
         },
         {
