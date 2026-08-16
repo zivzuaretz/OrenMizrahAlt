@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-16T16:41:19+03:00",
+    "lastUpdated": "2026-08-16T16:41:46+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -101,7 +101,7 @@
         {
           "id": "elite-agency",
           "name": "סוכנות עילית",
-          "sales": 1693000,
+          "sales": 1759000,
           "aliases": [
             "עלית",
             "עילית"
