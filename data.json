@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-16T16:32:13+03:00",
+    "lastUpdated": "2026-08-16T16:35:27+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -117,7 +117,7 @@
         {
           "id": "public",
           "name": "פאבליק",
-          "sales": 1500000,
+          "sales": 2300000,
           "target": 30000000
         },
         {
