@@ -19,7 +19,10 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0; min-width: 320px; color: var(--ink); background:
   radial-gradient(circle at 92% 4%, rgba(185,219,70,.14), transparent 24rem), var(--canvas);
-  font-family: Arial, "Noto Sans Hebrew", sans-serif; line-height: 1.5;
+  font-family: "Heebo", "Noto Sans Hebrew", Arial, sans-serif; line-height: 1.5;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 .skip-link { position: fixed; top: -4rem; right: 1rem; z-index: 10; padding: .7rem 1rem; color: white; background: var(--green-950); border-radius: 8px; }
 .skip-link:focus { top: 1rem; }
@@ -121,5 +124,24 @@ h2 { margin: 0; color: var(--green-950); font-size: clamp(1.55rem, 4vw, 2rem); }
   .team-card__name { font-size: 1.05rem; }
   .team-card__total { font-size: .98rem; }
 }
-@media (min-width: 700px) { .hero { grid-template-columns: 255px minmax(0,1fr); padding: 20px 32px; }.hero-brand { padding: 8px 14px; }.hero-brand .brand-logo { width: 78px; height: 78px; }.hero-brand .brand-logo--oren { width: 92px; }.hero-brand .partnership { flex-basis: 34px; }.overview { grid-template-columns: 1fr 1fr 1.2fr; margin: 18px 25px 0; }.teams-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }.metric,.team-card { transition: transform .2s ease, box-shadow .2s ease; }.metric:hover,.team-card:hover { transform: translateY(-2px); } }
+@media (min-width: 700px) {
+  .hero { grid-template-columns: 255px minmax(0,1fr); padding: 20px 32px; }
+  .hero-brand { padding: 8px 14px; }
+  .hero-brand .brand-logo { width: 78px; height: 78px; }
+  .hero-brand .brand-logo--oren { width: 92px; }
+  .hero-brand .partnership { flex-basis: 34px; }
+  .overview { grid-template-columns: 1fr 1fr 1.2fr; margin: 18px 25px 0; }
+  .teams-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .team-card__name { font-size: 1.35rem; font-weight: 800; }
+  .team-card__commitment { font-size: .82rem; }
+  .team-card__target-summary { font-size: .86rem; }
+  .team-card__total { font-size: 1.25rem; font-weight: 900; }
+  .agent-name { font-size: 1.05rem; font-weight: 700; }
+  .agent-sales { font-size: 1.05rem; font-weight: 900; }
+  .agent-progress-meta { font-size: .76rem; }
+  .metric__label { font-size: .95rem; }
+  .metric__caption { font-size: .84rem; }
+  .metric,.team-card { transition: transform .2s ease, box-shadow .2s ease; }
+  .metric:hover,.team-card:hover { transform: translateY(-2px); }
+}
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior: auto !important; transition: none !important; } }
