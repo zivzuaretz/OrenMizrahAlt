@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-16T16:42:56+03:00",
+    "lastUpdated": "2026-08-19T15:27:25+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -28,7 +28,7 @@
         {
           "id": "shai-aharon",
           "name": "נוי אהרון",
-          "sales": 0,
+          "sales": 750000,
           "target": 12000000
         },
         {
