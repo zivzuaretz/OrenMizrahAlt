@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-19T15:27:25+03:00",
+    "lastUpdated": "2026-08-19T15:28:29+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -88,7 +88,7 @@
         {
           "id": "shnir-arenhalt",
           "name": "שניר ארנהלט",
-          "sales": 1100000,
+          "sales": 1800000,
           "target": 5000000
         },
         {
