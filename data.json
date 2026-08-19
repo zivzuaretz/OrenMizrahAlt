@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-19T15:28:29+03:00",
+    "lastUpdated": "2026-08-19T15:34:04+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -70,7 +70,7 @@
         {
           "id": "lior-galili",
           "name": "ליאור גלילי",
-          "sales": 1120000,
+          "sales": 1670000,
           "target": 5000000
         },
         {
