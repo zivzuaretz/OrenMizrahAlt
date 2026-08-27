@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-19T15:34:04+03:00",
+    "lastUpdated": "2026-08-27T11:14:00+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -28,7 +28,7 @@
         {
           "id": "shai-aharon",
           "name": "נוי אהרון",
-          "sales": 750000,
+          "sales": 2250000,
           "target": 12000000
         },
         {
@@ -88,7 +88,7 @@
         {
           "id": "shnir-arenhalt",
           "name": "שניר ארנהלט",
-          "sales": 1800000,
+          "sales": 1970000,
           "target": 5000000
         },
         {
@@ -117,7 +117,7 @@
         {
           "id": "benchmark",
           "name": "בנצ'מרק",
-          "sales": 1886000,
+          "sales": 3086000,
           "target": 30000000
         },
         {
@@ -135,7 +135,7 @@
         {
           "id": "yuval-gabay",
           "name": "יובל גבאי",
-          "sales": 690000,
+          "sales": 1170000,
           "target": 10000000
         },
         {
