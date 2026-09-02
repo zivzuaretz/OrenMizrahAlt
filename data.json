@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-09-02T19:08:01+03:00",
+    "lastUpdated": "2026-09-02T19:08:30+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -129,7 +129,7 @@
         {
           "id": "or-segev",
           "name": "אור שגב",
-          "sales": 0,
+          "sales": 500000,
           "target": 5000000
         },
         {
