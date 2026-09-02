@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-08-27T11:14:00+03:00",
+    "lastUpdated": "2026-09-02T15:35:00+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -70,7 +70,7 @@
         {
           "id": "lior-galili",
           "name": "ליאור גלילי",
-          "sales": 1670000,
+          "sales": 2130000,
           "target": 5000000
         },
         {
@@ -141,7 +141,13 @@
         {
           "id": "phenomenal",
           "name": "פנומנל",
-          "sales": 1086000,
+          "sales": 1356000,
+          "target": 10000000
+        },
+        {
+          "id": "gal-rahmani",
+          "name": "גל רחמאני",
+          "sales": 820000,
           "target": 10000000
         }
       ]
