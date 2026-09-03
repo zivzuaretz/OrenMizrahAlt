@@ -4,7 +4,7 @@
     "target": 250000000,
     "currency": "ILS",
     "deadline": "2026-12-31",
-    "lastUpdated": "2026-09-02T19:08:30+03:00",
+    "lastUpdated": "2026-09-03T17:36:00+03:00",
     "banterIndex": 3
   },
   "teams": [
@@ -76,7 +76,7 @@
         {
           "id": "amit-salerno",
           "name": "עמית סלרנו",
-          "sales": 0,
+          "sales": 350000,
           "target": 5000000
         },
         {
@@ -88,7 +88,7 @@
         {
           "id": "shnir-arenhalt",
           "name": "שניר ארנהלט",
-          "sales": 1970000,
+          "sales": 2500000,
           "target": 5000000
         },
         {
