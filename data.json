@@ -16,7 +16,7 @@
         {
           "id": "meni-biton",
           "name": "מני ביטון",
-          "sales": 750000,
+          "sales": 800000,
           "target": 10000000
         },
         {
@@ -28,7 +28,7 @@
         {
           "id": "shai-aharon",
           "name": "נוי אהרון",
-          "sales": 2250000,
+          "sales": 2300000,
           "target": 12000000
         },
         {
@@ -76,7 +76,7 @@
         {
           "id": "amit-salerno",
           "name": "עמית סלרנו",
-          "sales": 350000,
+          "sales": 400000,
           "target": 5000000
         },
         {
@@ -107,7 +107,7 @@
         {
           "id": "elite-agency",
           "name": "סוכנות עילית",
-          "sales": 4859000,
+          "sales": 4900000,
           "aliases": [
             "עלית",
             "עילית"
@@ -117,7 +117,7 @@
         {
           "id": "benchmark",
           "name": "בנצ'מרק",
-          "sales": 7656000,
+          "sales": 7700000,
           "target": 30000000
         },
         {
@@ -135,19 +135,19 @@
         {
           "id": "yuval-gabay",
           "name": "יובל גבאי",
-          "sales": 1170000,
+          "sales": 1200000,
           "target": 10000000
         },
         {
           "id": "phenomenal",
           "name": "פנומנל",
-          "sales": 1356000,
+          "sales": 1400000,
           "target": 10000000
         },
         {
           "id": "gal-rahmani",
           "name": "גל רחמאני",
-          "sales": 920000,
+          "sales": 900000,
           "target": 10000000
         }
       ]
